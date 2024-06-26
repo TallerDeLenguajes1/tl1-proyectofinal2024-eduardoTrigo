@@ -14,7 +14,8 @@ namespace EspacioCaracteristicas
         public Caracteristicas(int velocidad, int destreza, int fuerza, int nivel, int armadura, int salud)
         {
             this.velocidad = velocidad;
-            this.destreza = fuerza;
+            this.destreza = destreza;
+            this.fuerza = fuerza;
             this.nivel = nivel;
             this.armadura = armadura;
             this.salud = salud;

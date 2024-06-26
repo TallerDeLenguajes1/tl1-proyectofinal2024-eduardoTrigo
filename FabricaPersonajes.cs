@@ -5,13 +5,14 @@ namespace EspacioFabicaDePersonajes
 {
 
     public class FabricaPersonajes
-    {
+    {   //declaracion de la lista de personajes que se cargara con los oponentes.
         List<Personaje> listasDePersonajes = new List<Personaje>();
         
         public Random random = new Random();
 
         public List<Personaje> ListasDePersonajes { get => listasDePersonajes; }
 
+        //genera 8 oponentes de diferente tipo al elejido por el usuario
         public void GenerarOponentes(TipoPersonaje tipo){
             for (int i = 0; i < 8; i++)
             {
@@ -19,18 +20,29 @@ namespace EspacioFabicaDePersonajes
             }
         }
 
+        //metodo que genera el nombre aleatorio del zombie
         public string GenerarNombreZombie()
         {
             string[] nombres = Enum.GetNames(typeof(NombresZombies));
             return nombres[random.Next(nombres.Length)];
         }
 
+        //metodo que genera el nombre aleatorio de la planta
         public string GenerarNombreplanta()
         {
             string[] nombres = Enum.GetNames(typeof(NombresPlantas));
             return nombres[random.Next(nombres.Length)];
         }
 
+        public Personaje CrearPlayer1(TipoPersonaje tipo, string nombre){
+            string apodo = "";
+            DateTime fechaNac = CalcularFechaNac(tipo);
+            Datos datosPlayer1 = new Datos(tipo,nombre,apodo,fechaNac);
+            Caracteristicas caracteristicasPlayer1 = GenerarCaracteristicas(tipo);
+            return new Personaje(datosPlayer1, caracteristicasPlayer1);
+        }
+
+        // metodo que crea cada adversario
         public void CrearAdversario(TipoPersonaje tipoOponentes)
         {
             TipoPersonaje tipo = tipoOponentes;
@@ -51,6 +63,7 @@ namespace EspacioFabicaDePersonajes
             ListasDePersonajes.Add(oponente);
         }
 
+        // metodo que genera la fecha de nacimiento a partir del tipo de personaje
         private DateTime CalcularFechaNac(TipoPersonaje tipo)
         {
             int min, max;
@@ -69,6 +82,7 @@ namespace EspacioFabicaDePersonajes
             return fechaNac;
         }
 
+        //genera las caracteristicas aleatorias (funciona pero en progreso)
         private Caracteristicas GenerarCaracteristicas(TipoPersonaje tipo)
         {
             int velocidad = random.Next(1, 10);
