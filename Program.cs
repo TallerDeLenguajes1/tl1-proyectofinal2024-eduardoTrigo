@@ -26,15 +26,24 @@ Personaje player1 = fabrica.CrearPlayer1(tipoPlayer1, nombrePlayer1);
 Funciones.MostrarDatosPersonaje(player1);
 
 
-// Console.WriteLine("tipo de oponentes:");
-// TipoPersonaje tipoOponentes;
-// if (tipoPlayer1 == TipoPersonaje.Plantas)
-// {
-//     tipoOponentes = TipoPersonaje.Zombies;
-// }else
-// {
-//     tipoOponentes = TipoPersonaje.Plantas;
-// }
+//genera los oponentes
+TipoPersonaje tipoOponentes;
+tipoOponentes = Funciones.AsignarOponentes(tipoPlayer1);
+Console.WriteLine($"tipo de oponentes: {tipoOponentes}");
+
+await fabrica.GenerarOponentes(tipoOponentes);
+
+List<Personaje> oponentes = fabrica.ListasDePersonajes;
+
+foreach (var oponente in oponentes)
+{
+    
+    Console.WriteLine("oponentes:");
+    Funciones.MostrarDatosPersonaje(oponente);
+}
+
+//
+
 
 // fabrica.GenerarOponentes(tipoOponentes);
 

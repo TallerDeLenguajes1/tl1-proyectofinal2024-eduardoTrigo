@@ -1,6 +1,7 @@
 using EspacioDatos;
 using EspacioCaracteristicas;
 using EspacioPersonajes;
+using EspacioTasks;
 namespace EspacioFabicaDePersonajes
 {
 
@@ -21,7 +22,7 @@ namespace EspacioFabicaDePersonajes
         //     }
         // }
 
-        // //metodo que genera el nombre aleatorio del zombie
+        //metodo que genera el nombre aleatorio del zombie
         // public string GenerarNombreZombie()
         // {
         //     string[] nombres = Enum.GetNames(typeof(NombresZombies));
@@ -29,7 +30,7 @@ namespace EspacioFabicaDePersonajes
         // }
 
         // //metodo que genera el nombre aleatorio de la planta
-        // public string GenerarNombreplanta()
+        // public string GenerarNombre()
         // {
         //     string[] nombres = Enum.GetNames(typeof(NombresPlantas));
         //     return nombres[random.Next(nombres.Length)];
@@ -41,6 +42,25 @@ namespace EspacioFabicaDePersonajes
             Datos datosPlayer1 = new Datos(tipo,nombre,apodo,fechaNac);
             Caracteristicas caracteristicasPlayer1 = GenerarCaracteristicas(tipo);
             return new Personaje(datosPlayer1, caracteristicasPlayer1);
+        }
+
+        public async Task GenerarOponentes(TipoPersonaje tipo){
+            string tipoOponente;
+            if (tipo == TipoPersonaje.Plantas)
+            {
+                tipoOponente = "plants";
+            }
+            else
+            {
+                tipoOponente = "zombies";
+            }
+            List<string> nombresOponentes = await Tasks.GetNombrePersonajes(tipoOponente);
+            for (int i = 0; i < 6; i++)
+            {
+                string nombre = nombresOponentes[random.Next(nombresOponentes.Count)];
+                Personaje oponente = CrearPlayer1(tipo,nombre);
+                ListasDePersonajes.Add(oponente);
+            }
         }
 
         // metodo que crea cada adversario

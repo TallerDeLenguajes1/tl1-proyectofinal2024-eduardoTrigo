@@ -7,6 +7,7 @@ namespace EspacioFunciones
 {
     class Funciones
     {
+        //Funcion Para seleccionar tipo de Personaje.
         public static TipoPersonaje SeleccionarTipoPersonaje()
         {
             string[] tipo = Enum.GetNames(typeof(TipoPersonaje));
@@ -24,7 +25,22 @@ namespace EspacioFunciones
                 esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= tipo.Length;
 
             }
-            return (TipoPersonaje)Enum.Parse(typeof(TipoPersonaje),tipo[opcion - 1]);
+            return (TipoPersonaje)Enum.Parse(typeof(TipoPersonaje), tipo[opcion - 1]);
+        }
+
+        //funcion para asignar Tipo de Oponentes.
+        public static TipoPersonaje AsignarOponentes(TipoPersonaje tipo)
+        {
+            TipoPersonaje oponentes;
+            if (tipo == TipoPersonaje.Plantas)
+            {
+                oponentes = TipoPersonaje.Zombies;
+            }else
+            {
+                oponentes = TipoPersonaje.Plantas;
+            }
+
+            return oponentes;
         }
 
         //Funcion Para Seleccionar el Personaje
@@ -56,10 +72,10 @@ namespace EspacioFunciones
                 esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= 10;
             }
             return nombres[opcion - 1];
-
         }
 
-        public static void MostrarDatosPersonaje(Personaje Player){
+        public static void MostrarDatosPersonaje(Personaje Player)
+        {
             Console.WriteLine($"Nombre: {Player.Datos.Nombre}");
             Console.WriteLine($"Tipo: {Player.Datos.Tipo}");
             Console.WriteLine($"Edad: {Player.Datos.Edad}");
