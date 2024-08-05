@@ -3,35 +3,42 @@ using EspacioPersonajes;
 using EspacioDatos;
 using EspacioCaracteristicas;
 using EspacioFunciones;
+using EspacioBanners;
 // See https://aka.ms/new-console-template for more information
-
-Console.WriteLine("Hello, World!");
-Console.WriteLine("Plantas vs Zombies");
 
 TipoPersonaje tipoPlayer1;
 string nombrePlayer1;
 
+//Banner Inicial con validacinon de tecla Enter.
+BannerPrinter.ShowBannerInicial();
+
+//llamado de funcion para elegir el tipo de personaje y asignarlo a una variable.
 tipoPlayer1 = Funciones.SeleccionarTipoPersonaje();
-nombrePlayer1 = Funciones.SeleccionarNombre(tipoPlayer1);
+
+//llamado de funcion para elegir el personaje y asignarlo a una variable.
+nombrePlayer1 =await Funciones.ElegirNombrePersonaje(tipoPlayer1);
+
 
 FabricaPersonajes fabrica = new FabricaPersonajes();
+
+//carga los datos de Player1
 Personaje player1 = fabrica.CrearPlayer1(tipoPlayer1, nombrePlayer1);
-Console.WriteLine($"Tipo: {player1.Datos.Tipo}, Nombre: {player1.Datos.Nombre}, Apodo: {player1.Datos.Apodo}, Fecha Nac: {player1.Datos.FechaNac.ToShortDateString()}, Edad: {player1.Datos.Edad}\n");
+Funciones.MostrarDatosPersonaje(player1);
 
 
-Console.WriteLine("tipo de oponentes:");
-TipoPersonaje tipoOponentes;
-if (tipoPlayer1 == TipoPersonaje.Planta)
-{
-    tipoOponentes = TipoPersonaje.Zombie;
-}else
-{
-    tipoOponentes = TipoPersonaje.Planta;
-}
+// Console.WriteLine("tipo de oponentes:");
+// TipoPersonaje tipoOponentes;
+// if (tipoPlayer1 == TipoPersonaje.Plantas)
+// {
+//     tipoOponentes = TipoPersonaje.Zombies;
+// }else
+// {
+//     tipoOponentes = TipoPersonaje.Plantas;
+// }
 
-fabrica.GenerarOponentes(tipoOponentes);
+// fabrica.GenerarOponentes(tipoOponentes);
 
-List<Personaje> oponentes = fabrica.ListasDePersonajes;
+// List<Personaje> oponentes = fabrica.ListasDePersonajes;
 
 // switch (tipoPlayer1)
 // {
@@ -47,14 +54,14 @@ List<Personaje> oponentes = fabrica.ListasDePersonajes;
 //         break;
 // }
 
-Console.WriteLine("----Tus Oponentes----");
-foreach (var oponente in oponentes)
-{
-    Console.WriteLine($"Tipo: {oponente.Datos.Tipo}, Nombre: {oponente.Datos.Nombre}, Apodo: {oponente.Datos.Apodo}, Fecha Nac: {oponente.Datos.FechaNac.ToShortDateString()}, Edad: {oponente.Datos.Edad}");
-    Console.WriteLine($"velocidad: {oponente.Caracteristicas.Velocidad}");
-    Console.WriteLine($"Destreza: {oponente.Caracteristicas.Destreza}");
-    Console.WriteLine($"Armadura: {oponente.Caracteristicas.Armadura}");
-    Console.WriteLine($"Fuerza: {oponente.Caracteristicas.Fuerza}");
-    Console.WriteLine($"Nivel: {oponente.Caracteristicas.Nivel}");
-    Console.WriteLine($"Salud: {oponente.Caracteristicas.Salud}\n");
-}
+// Console.WriteLine("----Tus Oponentes----");
+// foreach (var oponente in oponentes)
+// {
+//     Console.WriteLine($"Tipo: {oponente.Datos.Tipo}, Nombre: {oponente.Datos.Nombre}, Apodo: {oponente.Datos.Apodo}, Fecha Nac: {oponente.Datos.FechaNac.ToShortDateString()}, Edad: {oponente.Datos.Edad}");
+//     Console.WriteLine($"velocidad: {oponente.Caracteristicas.Velocidad}");
+//     Console.WriteLine($"Destreza: {oponente.Caracteristicas.Destreza}");
+//     Console.WriteLine($"Armadura: {oponente.Caracteristicas.Armadura}");
+//     Console.WriteLine($"Fuerza: {oponente.Caracteristicas.Fuerza}");
+//     Console.WriteLine($"Nivel: {oponente.Caracteristicas.Nivel}");
+//     Console.WriteLine($"Salud: {oponente.Caracteristicas.Salud}\n");
+// }

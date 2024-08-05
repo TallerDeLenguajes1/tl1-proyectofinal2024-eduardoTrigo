@@ -1,4 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using EspacioDatos;
+using EspacioPersonajes;
+using EspacioTasks;
 
 namespace EspacioFunciones
 {
@@ -24,31 +27,49 @@ namespace EspacioFunciones
             return (TipoPersonaje)Enum.Parse(typeof(TipoPersonaje),tipo[opcion - 1]);
         }
 
-        public static string SeleccionarNombre(TipoPersonaje tipo)
+        //Funcion Para Seleccionar el Personaje
+        public static async Task<string> ElegirNombrePersonaje(TipoPersonaje tipo)
         {
-            string[] nombres;
-            if (tipo == TipoPersonaje.Planta)
+            string tipoPlayer;
+            if (tipo == TipoPersonaje.Plantas)
             {
-                nombres = Enum.GetNames(typeof(NombresPlantas));
+                tipoPlayer = "plants";
             }
             else
             {
-                nombres = Enum.GetNames(typeof(NombresPlantas));
+                tipoPlayer = "zombies";
             }
 
-            Console.WriteLine("Elije un personaje");
-            for (int i = 0; i < nombres.Length; i++)
+            //Lista 10 Personajes traidos desde la api
+            List<string> nombres = await Tasks.GetNombrePersonajes(tipoPlayer);
+            for (int i = 0; i < Math.Min(10, nombres.Count); i++)
             {
                 Console.WriteLine($"{i + 1}) {nombres[i]}");
             }
-            int opcion ;
-            bool esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= nombres.Length;
+
+            int opcion;
+            //Valida si la opcion ingresada es la correcta
+            bool esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= 10;
             while (!esValido)
             {
-                Console.WriteLine("Opcion no valida, elige nuevamente el personaje");
-                esValido = int.TryParse(Console.ReadLine(),out opcion) && opcion > 0 && opcion < nombres.Length;
+                Console.WriteLine("opcion No valida, elija nuevamente");
+                esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= 10;
             }
             return nombres[opcion - 1];
+
+        }
+
+        public static void MostrarDatosPersonaje(Personaje Player){
+            Console.WriteLine($"Nombre: {Player.Datos.Nombre}");
+            Console.WriteLine($"Tipo: {Player.Datos.Tipo}");
+            Console.WriteLine($"Edad: {Player.Datos.Edad}");
+            Console.WriteLine($"---Caracteriesticas-----");
+            Console.WriteLine($"   Velocidad: {Player.Caracteristicas.Velocidad}");
+            Console.WriteLine($"   Destreza: {Player.Caracteristicas.Destreza}");
+            Console.WriteLine($"   Fuerza: {Player.Caracteristicas.Fuerza}");
+            Console.WriteLine($"   Nivel: {Player.Caracteristicas.Nivel}");
+            Console.WriteLine($"   Armadura: {Player.Caracteristicas.Armadura}");
+            Console.WriteLine($"   Salud: {Player.Caracteristicas.Salud}");
         }
 
     }

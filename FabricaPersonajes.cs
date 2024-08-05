@@ -13,26 +13,27 @@ namespace EspacioFabicaDePersonajes
         public List<Personaje> ListasDePersonajes { get => listasDePersonajes; }
 
         //genera 8 oponentes de diferente tipo al elejido por el usuario
-        public void GenerarOponentes(TipoPersonaje tipo){
-            for (int i = 0; i < 8; i++)
-            {
-                CrearAdversario(tipo);
-            }
-        }
+        // public void GenerarOponentes(TipoPersonaje tipo)
+        // {
+        //     for (int i = 0; i < 8; i++)
+        //     {
+        //         CrearAdversario(tipo);
+        //     }
+        // }
 
-        //metodo que genera el nombre aleatorio del zombie
-        public string GenerarNombreZombie()
-        {
-            string[] nombres = Enum.GetNames(typeof(NombresZombies));
-            return nombres[random.Next(nombres.Length)];
-        }
+        // //metodo que genera el nombre aleatorio del zombie
+        // public string GenerarNombreZombie()
+        // {
+        //     string[] nombres = Enum.GetNames(typeof(NombresZombies));
+        //     return nombres[random.Next(nombres.Length)];
+        // }
 
-        //metodo que genera el nombre aleatorio de la planta
-        public string GenerarNombreplanta()
-        {
-            string[] nombres = Enum.GetNames(typeof(NombresPlantas));
-            return nombres[random.Next(nombres.Length)];
-        }
+        // //metodo que genera el nombre aleatorio de la planta
+        // public string GenerarNombreplanta()
+        // {
+        //     string[] nombres = Enum.GetNames(typeof(NombresPlantas));
+        //     return nombres[random.Next(nombres.Length)];
+        // }
 
         public Personaje CrearPlayer1(TipoPersonaje tipo, string nombre){
             string apodo = "";
@@ -43,32 +44,32 @@ namespace EspacioFabicaDePersonajes
         }
 
         // metodo que crea cada adversario
-        public void CrearAdversario(TipoPersonaje tipoOponentes)
-        {
-            TipoPersonaje tipo = tipoOponentes;
-            string nombre;
-            if (tipo == TipoPersonaje.Planta)
-            {
-                nombre = GenerarNombreplanta();
-            }
-            else
-            {
-                nombre = GenerarNombreZombie();
-            }
-            string apodo = "";
-            DateTime fechaNac = CalcularFechaNac(tipo);
-            Datos datosOponentes = new Datos(tipo, nombre, apodo, fechaNac);
-            Caracteristicas caracteristicasOponentes = GenerarCaracteristicas(tipo);
-            Personaje oponente = new Personaje(datosOponentes,caracteristicasOponentes);
-            ListasDePersonajes.Add(oponente);
-        }
+        // public void CrearAdversario(TipoPersonaje tipoOponentes)
+        // {
+        //     TipoPersonaje tipo = tipoOponentes;
+        //     string nombre;
+        //     if (tipo == TipoPersonaje.Plantas)
+        //     {
+        //         nombre = GenerarNombreplanta();
+        //     }
+        //     else
+        //     {
+        //         nombre = GenerarNombreZombie();
+        //     }
+        //     string apodo = "";
+        //     DateTime fechaNac = CalcularFechaNac(tipo);
+        //     Datos datosOponentes = new Datos(tipo, nombre, apodo, fechaNac);
+        //     Caracteristicas caracteristicasOponentes = GenerarCaracteristicas(tipo);
+        //     Personaje oponente = new Personaje(datosOponentes,caracteristicasOponentes);
+        //     ListasDePersonajes.Add(oponente);
+        // }
 
         // metodo que genera la fecha de nacimiento a partir del tipo de personaje
         private DateTime CalcularFechaNac(TipoPersonaje tipo)
         {
             int min, max;
             DateTime fechaNac;
-            if (tipo == TipoPersonaje.Planta)
+            if (tipo == TipoPersonaje.Plantas)
             {
                 min = DateTime.Now.Year - 10;
                 max = DateTime.Now.Year - 35;

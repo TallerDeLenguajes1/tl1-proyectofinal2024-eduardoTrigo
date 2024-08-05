@@ -4,8 +4,8 @@ namespace EspacioDatos
 
     public enum TipoPersonaje
     {
-        Planta,
-        Zombie,
+        Plantas,
+        Zombies,
     }
     public enum NombresPlantas
     {

@@ -3,16 +3,6 @@ using EspacioDatos;
 
 namespace EspacioPersonajes
 {
-
-    public enum PersonajeZombie
-    {
-
-    }
-
-    public enum PersonajePlanta
-    {
-
-    }
     public class Personaje
     {
         Datos datos;
