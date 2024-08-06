@@ -44,6 +44,8 @@ namespace EspacioFabicaDePersonajes
             return new Personaje(datosPlayer1, caracteristicasPlayer1);
         }
 
+
+        //metodo para generar los oponentes
         public async Task GenerarOponentes(TipoPersonaje tipo){
             string tipoOponente;
             if (tipo == TipoPersonaje.Plantas)

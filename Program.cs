@@ -4,6 +4,7 @@ using EspacioDatos;
 using EspacioCaracteristicas;
 using EspacioFunciones;
 using EspacioBanners;
+using EspacioJson;
 // See https://aka.ms/new-console-template for more information
 
 TipoPersonaje tipoPlayer1;
@@ -35,6 +36,8 @@ await fabrica.GenerarOponentes(tipoOponentes);
 
 List<Personaje> oponentes = fabrica.ListasDePersonajes;
 
+
+//Recorre la lista y muestra cada oponente
 foreach (var oponente in oponentes)
 {
     
@@ -42,8 +45,25 @@ foreach (var oponente in oponentes)
     Funciones.MostrarDatosPersonaje(oponente);
 }
 
-//
+//guarda los personajes en un json
+string archivoPersonajes = "personajes.json";
+List<Personaje> jsonPersonajes = new List<Personaje> {player1};     //primero guardo el player1
+jsonPersonajes.AddRange(oponentes);                                 //despues guardo los oponentes
 
+PersonajeJson.GuardarPersonajes(jsonPersonajes, archivoPersonajes);
+
+//Lee y mustra los archivos del personaje.json
+if (PersonajeJson.Existe(archivoPersonajes))
+{
+    List<Personaje> personajesDelJson = PersonajeJson.LeerPersonajes(archivoPersonajes);
+    Console.WriteLine("Personajes contenidos en el archivo JSON:");
+    foreach (var personaje in personajesDelJson)
+    {
+        Funciones.MostrarDatosPersonaje(personaje);
+    }
+}
+
+BannerPrinter.ShowBannerGameOver();
 
 // fabrica.GenerarOponentes(tipoOponentes);
 
