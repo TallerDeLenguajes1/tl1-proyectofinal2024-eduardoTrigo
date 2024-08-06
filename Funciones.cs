@@ -35,7 +35,8 @@ namespace EspacioFunciones
             if (tipo == TipoPersonaje.Plantas)
             {
                 oponentes = TipoPersonaje.Zombies;
-            }else
+            }
+            else
             {
                 oponentes = TipoPersonaje.Plantas;
             }
@@ -72,6 +73,39 @@ namespace EspacioFunciones
                 esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= 10;
             }
             return nombres[opcion - 1];
+        }
+
+        public static void ListarInicioOponentes(List<Personaje> lista)
+        {
+            bool continuar = false;
+            int opcion;
+            do
+            {
+                for (int i = 0; i < lista.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}) {lista[i].Datos.Nombre}");
+                }
+
+                Console.WriteLine("\n-Presione ENTER para continuar con la lucha contra el oponente número 1");
+                Console.WriteLine("-O elija el número del oponente para mostrar sus datos y características:\n");
+
+                var teclaPresionada = Console.ReadKey(intercept: true);
+
+                if (teclaPresionada.Key == ConsoleKey.Enter)
+                {
+                    continuar = true;
+                }
+                else if (int.TryParse(teclaPresionada.KeyChar.ToString(), out opcion) && opcion > 0 && opcion <= lista.Count)
+                {
+                    Personaje opcionOponente = lista[opcion - 1];
+                    Funciones.MostrarDatosPersonaje(opcionOponente);
+                }
+                else
+                {
+                    Console.WriteLine("\nOpcion no valida. Intentalo de nuevo.!!!");
+                }
+
+            } while (!continuar);
         }
 
         public static void MostrarDatosPersonaje(Personaje Player)
