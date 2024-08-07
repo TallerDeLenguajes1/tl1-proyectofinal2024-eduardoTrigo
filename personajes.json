@@ -1,0 +1,121 @@
+[
+  {
+    "Datos": {
+      "Tipo": 0,
+      "Nombre": "banana launcher",
+      "Apodo": "",
+      "FechaNac": "2007-03-22T00:00:00",
+      "Edad": 17
+    },
+    "Caracteristicas": {
+      "Velocidad": 9,
+      "Destreza": 4,
+      "Fuerza": 3,
+      "Nivel": 5,
+      "Armadura": 3,
+      "Salud": 8
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "wild west gargantuar",
+      "Apodo": "",
+      "FechaNac": "1895-10-13T00:00:00",
+      "Edad": 128
+    },
+    "Caracteristicas": {
+      "Velocidad": 3,
+      "Destreza": 9,
+      "Fuerza": 4,
+      "Nivel": 1,
+      "Armadura": 8,
+      "Salud": 6
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "centurion zombie",
+      "Apodo": "",
+      "FechaNac": "1906-11-03T00:00:00",
+      "Edad": 117
+    },
+    "Caracteristicas": {
+      "Velocidad": 5,
+      "Destreza": 3,
+      "Fuerza": 3,
+      "Nivel": 6,
+      "Armadura": 9,
+      "Salud": 8
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "mummified gargantuar",
+      "Apodo": "",
+      "FechaNac": "1930-03-27T00:00:00",
+      "Edad": 94
+    },
+    "Caracteristicas": {
+      "Velocidad": 2,
+      "Destreza": 3,
+      "Fuerza": 3,
+      "Nivel": 3,
+      "Armadura": 6,
+      "Salud": 2
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "mecha-football zombie",
+      "Apodo": "",
+      "FechaNac": "1928-06-02T00:00:00",
+      "Edad": 96
+    },
+    "Caracteristicas": {
+      "Velocidad": 7,
+      "Destreza": 2,
+      "Fuerza": 2,
+      "Nivel": 7,
+      "Armadura": 7,
+      "Salud": 4
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "zcorp contractor conehead",
+      "Apodo": "",
+      "FechaNac": "1927-07-29T00:00:00",
+      "Edad": 97
+    },
+    "Caracteristicas": {
+      "Velocidad": 1,
+      "Destreza": 9,
+      "Fuerza": 2,
+      "Nivel": 2,
+      "Armadura": 6,
+      "Salud": 4
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "conehead pirate",
+      "Apodo": "",
+      "FechaNac": "1884-05-14T00:00:00",
+      "Edad": 140
+    },
+    "Caracteristicas": {
+      "Velocidad": 8,
+      "Destreza": 5,
+      "Fuerza": 8,
+      "Nivel": 1,
+      "Armadura": 4,
+      "Salud": 3
+    }
+  }
+]

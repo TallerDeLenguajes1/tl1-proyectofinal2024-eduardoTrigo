@@ -37,35 +37,25 @@ await fabrica.GenerarOponentes(tipoOponentes);
 List<Personaje> oponentes = fabrica.ListasDePersonajes;
 
 
-//Recorre la lista y muestra cada oponente
-// foreach (var oponente in oponentes)
-// {
-
-//     Console.WriteLine("oponentes:");
-//     Funciones.MostrarDatosPersonaje(oponente);
-// }
-
 //guarda los personajes en un json
 string archivoPersonajes = "personajes.json";
 List<Personaje> jsonPersonajes = new List<Personaje> { player1 };     //primero guardo el player1
 jsonPersonajes.AddRange(oponentes);                                 //despues guardo los oponentes
 
-PersonajeJson.GuardarPersonajes(jsonPersonajes, archivoPersonajes);
+
+//verifica si el archivo .json existe y guardo(actualiza) los datos 
+PersonajeJson.VerificaYguardaLosPersonajes( archivoPersonajes ,jsonPersonajes);
 
 
 //Lista los nombres para elegir uno o presionar enter para continuar
 Funciones.ListarInicioOponentes(oponentes);
 
 
-//Lee y mustra los archivos del personaje.json
-if (PersonajeJson.Existe(archivoPersonajes))
-{
-    List<Personaje> personajesDelJson = PersonajeJson.LeerPersonajes(archivoPersonajes);
-    Console.WriteLine("Personajes contenidos en el archivo JSON:");
-    foreach (var personaje in personajesDelJson)
-    {
-        Funciones.MostrarDatosPersonaje(personaje);
-    }
-}
+//primero verifica si el archivoPersonajes existe.
+//luego Lee y mustra los archivos del personaje.json
 
+PersonajeJson.MostrarPersonajesDesdeElJson(archivoPersonajes);
+
+
+//Banner Game Over
 BannerPrinter.ShowBannerGameOver();
