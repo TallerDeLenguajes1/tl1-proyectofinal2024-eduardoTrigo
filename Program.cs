@@ -5,6 +5,7 @@ using EspacioCaracteristicas;
 using EspacioFunciones;
 using EspacioBanners;
 using EspacioJson;
+using EspacioEnfrentamiento;
 // See https://aka.ms/new-console-template for more information
 
 TipoPersonaje tipoPlayer1;
@@ -23,8 +24,8 @@ nombrePlayer1 = await Funciones.ElegirNombrePersonaje(tipoPlayer1);
 FabricaPersonajes fabrica = new FabricaPersonajes();
 
 //carga los datos de Player1
-Personaje player1 = fabrica.CrearPlayer1(tipoPlayer1, nombrePlayer1);
-Funciones.MostrarDatosPersonaje(player1);
+Personaje atacante = fabrica.CrearPlayer1(tipoPlayer1, nombrePlayer1);
+Funciones.MostrarDatosPersonaje(atacante);
 
 
 //genera los oponentes
@@ -39,7 +40,7 @@ List<Personaje> oponentes = fabrica.ListasDePersonajes;
 
 //guarda los personajes en un json
 string archivoPersonajes = "personajes.json";
-List<Personaje> jsonPersonajes = new List<Personaje> { player1 };     //primero guardo el player1
+List<Personaje> jsonPersonajes = new List<Personaje> { atacante };     //primero guardo el player1
 jsonPersonajes.AddRange(oponentes);                                 //despues guardo los oponentes
 
 
@@ -53,8 +54,11 @@ Funciones.ListarInicioOponentes(oponentes);
 
 //primero verifica si el archivoPersonajes existe.
 //luego Lee y mustra los archivos del personaje.json
-
 PersonajeJson.MostrarPersonajesDesdeElJson(archivoPersonajes);
+
+
+//Inicio de lucha contra todos
+Enfrentamiento.LuchasContraTodos(atacante, oponentes);
 
 
 //Banner Game Over
