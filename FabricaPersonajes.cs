@@ -65,27 +65,6 @@ namespace EspacioFabicaDePersonajes
             }
         }
 
-        // metodo que crea cada adversario
-        // public void CrearAdversario(TipoPersonaje tipoOponentes)
-        // {
-        //     TipoPersonaje tipo = tipoOponentes;
-        //     string nombre;
-        //     if (tipo == TipoPersonaje.Plantas)
-        //     {
-        //         nombre = GenerarNombreplanta();
-        //     }
-        //     else
-        //     {
-        //         nombre = GenerarNombreZombie();
-        //     }
-        //     string apodo = "";
-        //     DateTime fechaNac = CalcularFechaNac(tipo);
-        //     Datos datosOponentes = new Datos(tipo, nombre, apodo, fechaNac);
-        //     Caracteristicas caracteristicasOponentes = GenerarCaracteristicas(tipo);
-        //     Personaje oponente = new Personaje(datosOponentes,caracteristicasOponentes);
-        //     ListasDePersonajes.Add(oponente);
-        // }
-
         // metodo que genera la fecha de nacimiento a partir del tipo de personaje
         private DateTime CalcularFechaNac(TipoPersonaje tipo)
         {
@@ -109,11 +88,11 @@ namespace EspacioFabicaDePersonajes
         private Caracteristicas GenerarCaracteristicas(TipoPersonaje tipo)
         {
             int velocidad = random.Next(1, 10);
-            int destreza = random.Next(1, 10);
+            int destreza = random.Next(1, 5);
             int fuerza = random.Next(1, 10);
             int nivel = random.Next(1, 10);
             int armadura = random.Next(1, 10);
-            int salud = random.Next(1, 10);
+            int salud = 100;
             return new Caracteristicas(velocidad, destreza, fuerza, nivel, armadura, salud);
         }
 

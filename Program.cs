@@ -12,7 +12,7 @@ TipoPersonaje tipoPlayer1;
 string nombrePlayer1;
 
 //Banner Inicial con validacinon de tecla Enter.
-BannerPrinter.ShowBannerInicial();
+Banners.ShowBannerInicial();
 
 //llamado de funcion para elegir el tipo de personaje y asignarlo a una variable.
 tipoPlayer1 = Funciones.SeleccionarTipoPersonaje();
@@ -62,4 +62,4 @@ Enfrentamiento.LuchasContraTodos(atacante, oponentes);
 
 
 //Banner Game Over
-BannerPrinter.ShowBannerGameOver();
+// Banners.ShowBannerGameOver();

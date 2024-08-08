@@ -1,10 +1,10 @@
 namespace EspacioBanners
 {
-    public static class BannerPrinter
+    public static class Banners
     {
         public static void ShowBannerInicial()
         {
-        Console.WriteLine(@"
+            Console.WriteLine(@"
         ██████╗ ██╗      █████╗ ███╗   ██╗████████╗ █████╗ ███████╗    ██╗   ██╗███████╗    ███████╗ ██████╗ ███╗   ███╗██████╗ ██╗███████╗███████╗
         ██╔══██╗██║     ██╔══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝    ██║   ██║██╔════╝    ╚══███╔╝██╔═══██╗████╗ ████║██╔══██╗██║██╔════╝██╔════╝
         ██████╔╝██║     ███████║██╔██╗ ██║   ██║   ███████║███████╗    ██║   ██║███████╗      ███╔╝ ██║   ██║██╔████╔██║██████╔╝██║█████╗  ███████╗
@@ -12,22 +12,34 @@ namespace EspacioBanners
         ██║     ███████╗██║  ██║██║ ╚████║   ██║   ██║  ██║███████║     ╚████╔╝ ███████║    ███████╗╚██████╔╝██║ ╚═╝ ██║██████╔╝██║███████╗███████║
         ╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝      ╚═══╝  ╚══════╝    ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝╚══════╝╚══════╝
                                                                 Presione ENTER para continuar");
-        while (Console.ReadKey().Key != ConsoleKey.Enter)
-        {
-            Console.WriteLine("\nPresione ENTER para continuar");
-        }
-            
+            while (Console.ReadKey().Key != ConsoleKey.Enter)
+            {
+                Console.WriteLine("\nPresione ENTER para continuar");
+            }
+
         }
 
-        public static void ShowBannerGameOver(){
-        Console.WriteLine(@"
+        public static void ShowBannerGameOver()
+        {
+            Console.WriteLine(@"
          ██████   █████  ███    ███ ███████      ██████  ██    ██ ███████ ██████  
         ██       ██   ██ ████  ████ ██          ██    ██ ██    ██ ██      ██   ██ 
         ██   ███ ███████ ██ ████ ██ █████       ██    ██ ██    ██ █████   ██████  
         ██    ██ ██   ██ ██  ██  ██ ██          ██    ██  ██  ██  ██      ██   ██ 
          ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██
-        ");    
+        ");
+        }
+
+        public static void Winner()
+        {
+            Console.WriteLine(@"   
+        ██     ██ ██ ███    ██ ███    ██ ███████ ██████      ██ ██ ██ 
+        ██     ██ ██ ████   ██ ████   ██ ██      ██   ██     ██ ██ ██ 
+        ██  █  ██ ██ ██ ██  ██ ██ ██  ██ █████   ██████      ██ ██ ██ 
+        ██ ███ ██ ██ ██  ██ ██ ██  ██ ██ ██      ██   ██              
+         ███ ███  ██ ██   ████ ██   ████ ███████ ██   ██     ██ ██ ██ 
+        ");
         }
     }
-    
+
 }

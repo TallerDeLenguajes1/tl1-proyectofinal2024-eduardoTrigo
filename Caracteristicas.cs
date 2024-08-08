@@ -32,9 +32,9 @@ namespace EspacioCaracteristicas
 
         public int Velocidad { get => velocidad; }
         public int Destreza { get => destreza; }
-        public int Fuerza { get => fuerza; }
+        public int Fuerza { get => fuerza; set => fuerza = value;}
         public int Nivel { get => nivel; }
-        public int Armadura { get => armadura; }
+        public int Armadura { get => armadura; set => armadura = value;}
         public int Salud { get => salud; set => salud = value; }
     }
 }
