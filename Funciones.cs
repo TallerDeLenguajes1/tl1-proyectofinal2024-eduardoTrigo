@@ -10,7 +10,7 @@ namespace EspacioFunciones
         //Funcion Para seleccionar tipo de Personaje.
         public static TipoPersonaje SeleccionarTipoPersonaje()
         {
-            string[] tipo = Enum.GetNames(typeof(TipoPersonaje));
+            string[] tipo = Enum.GetNames(typeof(TipoPersonaje));//trae los tipos de personajes desde un enum
             Console.WriteLine("Elige un tipo de personaje");
             for (int i = 0; i < tipo.Length; i++)
             {
@@ -18,8 +18,8 @@ namespace EspacioFunciones
             }
 
             int opcion;
-            bool esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= tipo.Length;
-            while (!esValido)
+            bool esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= tipo.Length;// verifica si el valor ingresado es valido
+            while (!esValido)  // si lo ingresado no es valido pide nuevamente que ingrese un numero
             {
                 Console.WriteLine("Opcion no valida, elije nuevamente");
                 esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= tipo.Length;
@@ -28,7 +28,7 @@ namespace EspacioFunciones
             return (TipoPersonaje)Enum.Parse(typeof(TipoPersonaje), tipo[opcion - 1]);
         }
 
-        //funcion para asignar Tipo de Oponentes.
+        //funcion para asignar Tipo de Oponentes contrario a la eleccion de tipo de personaje.
         public static TipoPersonaje AsignarOponentes(TipoPersonaje tipo)
         {
             TipoPersonaje oponentes;
@@ -89,7 +89,7 @@ namespace EspacioFunciones
                 Console.WriteLine("\n-Presione ENTER para continuar con la lucha contra el oponente número 1");
                 Console.WriteLine("-O elija el número del oponente para mostrar sus datos y características:\n");
 
-                var teclaPresionada = Console.ReadKey(intercept: true);
+                var teclaPresionada = Console.ReadKey(intercept: true); // No me muestra por pantalla lo tipeado
 
                 if (teclaPresionada.Key == ConsoleKey.Enter)
                 {

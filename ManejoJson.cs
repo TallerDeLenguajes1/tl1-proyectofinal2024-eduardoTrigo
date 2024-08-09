@@ -1,4 +1,5 @@
 using System.Text.Json;
+using EspacioDatos;
 using EspacioFunciones;
 using EspacioPersonajes;
 
@@ -13,7 +14,7 @@ namespace EspacioJson
             File.WriteAllText(nombreArchivo, jsonString);
         }
 
-        //metodo para leer el Json de personajes
+        //metodo para leer el Json de personajes y carga en la lista
         public static List<Personaje> LeerPersonajes(string nombreArchivo)
         {
             if (!File.Exists(nombreArchivo))
@@ -45,6 +46,8 @@ namespace EspacioJson
             GuardarPersonajes(nuevosPersonajes, nombreArchivo);
         }
 
+
+        //extrae del personajes.json los datos y los coloca en la lista para recorrela y mostrarlo por pantalla
         public static void MostrarPersonajesDesdeElJson(string archivoPersonajes)
         {
             if (Existe(archivoPersonajes))
@@ -57,8 +60,43 @@ namespace EspacioJson
                 }
             }
         }
+
+        //metodo que guarda los datos en el archivo json historial
+        public static void GuardarHistorialEnfrentamiento(List<HistorialEnfrentamiento> historial, string nombreArchivo)
+        {
+            string? jsonHistorial = JsonSerializer.Serialize(historial, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(nombreArchivo, jsonHistorial);
+        }
+
+        //metodo para leer el Json de historial y carga en la lista
+        public static List<HistorialEnfrentamiento> LeerHistorial(string nombreArchivo)
+        {
+            if (!File.Exists(nombreArchivo))
+            {
+                return new List<HistorialEnfrentamiento>();
+            }
+
+            string jsonHistorial = File.ReadAllText(nombreArchivo);
+            List<HistorialEnfrentamiento>? historial = JsonSerializer.Deserialize<List<HistorialEnfrentamiento>>(jsonHistorial);
+            return historial;
+        }
+
+        //metodo para guardar los gandores en un Json
+        public static void GuardarGanadores(List<string> ganadores, string nombreArchivo)
+        {
+            string jsonGanadores = JsonSerializer.Serialize(ganadores, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(nombreArchivo, jsonGanadores);
+        }
+
+        //metodo que lee el json del historial y carga en una lista de string
+        public static List<string> LeerGanadores(string nombreArchivo){
+            if(!File.Exists(nombreArchivo)){
+                return new List<string>();
+            }
+
+            string jsonGanadores = File.ReadAllText(nombreArchivo);
+            List<string>? Ganadores = JsonSerializer.Deserialize<List<string>>(jsonGanadores);
+            return Ganadores;
+        }
     }
-
-
-
 }

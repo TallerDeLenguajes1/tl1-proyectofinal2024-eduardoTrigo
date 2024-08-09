@@ -52,4 +52,14 @@ namespace EspacioDatos
         public DateTime FechaNac { get => fechaNac; }
         public int Edad { get => edad; }
     }
+
+
+    //clase creada para guardar los datos en el historial de json
+    public class HistorialEnfrentamiento
+    {
+        public string? Player { get; set; }
+        public string? Oponente { get; set; }
+        public string? Resultado { get; set; }
+        public DateTime Fecha { get; set; }
+    }
 }

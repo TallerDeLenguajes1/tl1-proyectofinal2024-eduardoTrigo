@@ -1,12 +1,14 @@
 using System.Security.Cryptography.X509Certificates;
 using EspacioBanners;
+using EspacioDatos;
+using EspacioJson;
 using EspacioPersonajes;
 
 namespace EspacioEnfrentamiento
 {
     public static class Enfrentamiento
     {
-        public static void Lucha(Personaje player1, Personaje oponente, int enfrentamiento)
+        public static void Lucha(Personaje player1, Personaje oponente, int enfrentamiento, string archivoHistorial, string archivoGanadores)
         {
             Random random = new Random();
             Console.WriteLine($"\nENFRENTAMIENTO {enfrentamiento} : {player1.Datos.Nombre} VS {oponente.Datos.Nombre}");
@@ -22,6 +24,8 @@ namespace EspacioEnfrentamiento
                     Console.WriteLine($"{oponente.Datos.Nombre} ha sido Derrotado");
                     player1.Caracteristicas.Salud = 100;
                     AplicarMejora(player1);
+
+                    registrarHistorial(player1.Datos.Nombre, oponente.Datos.Nombre, "Gano", archivoHistorial );
                     break;
                 }
 
@@ -32,12 +36,13 @@ namespace EspacioEnfrentamiento
                 if (player1.Caracteristicas.Salud <= 0)
                 {
                     Console.WriteLine($"{player1.Datos.Nombre} ha sido derrotado por {oponente.Datos.Nombre}!");
+                    registrarHistorial(player1.Datos.Nombre, oponente.Datos.Nombre, "Perdio", archivoHistorial);
                     break;
                 }
             }
         }
 
-        public static void LuchasContraTodos(Personaje player, List<Personaje> oponentes)
+        public static void LuchasContraTodos(Personaje player, List<Personaje> oponentes, string archivoHistorial, string archivoGanadores)
         {
             int numeroEnfrentamiento = 1;  // contador de enfrentamiento
             //recorre la lista de oponentes
@@ -45,7 +50,7 @@ namespace EspacioEnfrentamiento
             {
                 // Console.WriteLine($"\n{player.Datos.Nombre} se enfrenta a {oponente.Datos.Nombre}");
 
-                Lucha(player, oponente, numeroEnfrentamiento);
+                Lucha(player, oponente, numeroEnfrentamiento, archivoHistorial, archivoGanadores);
                 numeroEnfrentamiento++;
                 if (player.Caracteristicas.Salud <= 0)
                 {
@@ -102,6 +107,46 @@ namespace EspacioEnfrentamiento
                     Console.WriteLine($"{player.Datos.Nombre} gana +10 de Salud");
                     break;
             }
+        }
+
+        //metodo para cargar el historial
+        public static void registrarHistorial(string nombrePlayer1, string nombreOponente, string resultado, string archivoHistorial)
+        {
+            var nuevoEnfrentamiento = new HistorialEnfrentamiento {
+                Player = nombrePlayer1,
+                Oponente = nombreOponente,
+                Resultado = resultado,
+                Fecha = DateTime.Now
+            };
+
+            List<HistorialEnfrentamiento> historial;
+            if (PersonajeJson.Existe(archivoHistorial))
+            {
+                historial = PersonajeJson.LeerHistorial(archivoHistorial);
+            }
+            else
+            {
+                historial = new List<HistorialEnfrentamiento>();    
+            }
+
+            historial.Add(nuevoEnfrentamiento);
+            PersonajeJson.GuardarHistorialEnfrentamiento(historial,archivoHistorial);
+        }
+
+        public static void GuardarGanador(string nombreGanador, string archivoGanadores)
+        {
+            List<string> ganadores;
+            if (PersonajeJson.Existe(archivoGanadores))
+            {
+                ganadores = PersonajeJson.LeerGanadores(archivoGanadores);
+            }
+            else
+            {
+                ganadores = new List<string>();
+            }
+
+            ganadores.Add(nombreGanador);
+            PersonajeJson.GuardarGanadores(ganadores, archivoGanadores);
         }
     }
 }

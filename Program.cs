@@ -45,7 +45,7 @@ jsonPersonajes.AddRange(oponentes);                                 //despues gu
 
 
 //verifica si el archivo .json existe y guardo(actualiza) los datos 
-PersonajeJson.VerificaYguardaLosPersonajes( archivoPersonajes ,jsonPersonajes);
+PersonajeJson.VerificaYguardaLosPersonajes(archivoPersonajes, jsonPersonajes);
 
 
 //Lista los nombres para elegir uno o presionar enter para continuar
@@ -57,8 +57,10 @@ Funciones.ListarInicioOponentes(oponentes);
 PersonajeJson.MostrarPersonajesDesdeElJson(archivoPersonajes);
 
 
+string archivoHistorial = "historial.json";
+string archivoGanadores = "historialGanadores.json";
 //Inicio de lucha contra todos
-Enfrentamiento.LuchasContraTodos(atacante, oponentes);
+Enfrentamiento.LuchasContraTodos(atacante, oponentes, archivoHistorial, archivoGanadores);
 
 
 //Banner Game Over
