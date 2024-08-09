@@ -25,7 +25,7 @@ namespace EspacioEnfrentamiento
                     player1.Caracteristicas.Salud = 100;
                     AplicarMejora(player1);
 
-                    registrarHistorial(player1.Datos.Nombre, oponente.Datos.Nombre, "Gano", archivoHistorial );
+                    registrarHistorial(player1.Datos.Nombre, oponente.Datos.Nombre, "Gano", archivoHistorial);
                     break;
                 }
 
@@ -48,8 +48,6 @@ namespace EspacioEnfrentamiento
             //recorre la lista de oponentes
             foreach (var oponente in oponentes)
             {
-                // Console.WriteLine($"\n{player.Datos.Nombre} se enfrenta a {oponente.Datos.Nombre}");
-
                 Lucha(player, oponente, numeroEnfrentamiento, archivoHistorial, archivoGanadores);
                 numeroEnfrentamiento++;
                 if (player.Caracteristicas.Salud <= 0)
@@ -69,6 +67,7 @@ namespace EspacioEnfrentamiento
             {
                 Console.WriteLine($"{player.Datos.Nombre} ha derrotado todos los oponentes .");
                 Banners.Winner();
+                GuardarGanador(player.Datos.Nombre, archivoGanadores); //guarda al ganador en el archivo json
             }
         }
 
@@ -87,6 +86,8 @@ namespace EspacioEnfrentamiento
             Console.WriteLine($"Salud de {defensor.Datos.Nombre} despues del ataque: {defensor.Caracteristicas.Salud}");
         }
 
+
+        //metodo que aplica la mejora aleatoria a alguna caracteristica del player1
         public static void AplicarMejora(Personaje player)
         {
             Random random = new Random();
@@ -112,7 +113,8 @@ namespace EspacioEnfrentamiento
         //metodo para cargar el historial
         public static void registrarHistorial(string nombrePlayer1, string nombreOponente, string resultado, string archivoHistorial)
         {
-            var nuevoEnfrentamiento = new HistorialEnfrentamiento {
+            var nuevoEnfrentamiento = new HistorialEnfrentamiento
+            {
                 Player = nombrePlayer1,
                 Oponente = nombreOponente,
                 Resultado = resultado,
@@ -126,13 +128,14 @@ namespace EspacioEnfrentamiento
             }
             else
             {
-                historial = new List<HistorialEnfrentamiento>();    
+                historial = new List<HistorialEnfrentamiento>();
             }
 
             historial.Add(nuevoEnfrentamiento);
-            PersonajeJson.GuardarHistorialEnfrentamiento(historial,archivoHistorial);
+            PersonajeJson.GuardarHistorialEnfrentamiento(historial, archivoHistorial);
         }
 
+        //guarda el ganador al archivo json haciendo el llamado del merodo Guardar ganadores
         public static void GuardarGanador(string nombreGanador, string archivoGanadores)
         {
             List<string> ganadores;

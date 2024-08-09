@@ -89,14 +89,90 @@ namespace EspacioJson
         }
 
         //metodo que lee el json del historial y carga en una lista de string
-        public static List<string> LeerGanadores(string nombreArchivo){
-            if(!File.Exists(nombreArchivo)){
+        public static List<string> LeerGanadores(string nombreArchivo)
+        {
+            if (!File.Exists(nombreArchivo))
+            {
                 return new List<string>();
             }
 
             string jsonGanadores = File.ReadAllText(nombreArchivo);
             List<string>? Ganadores = JsonSerializer.Deserialize<List<string>>(jsonGanadores);
             return Ganadores;
+        }
+
+
+        //menu final
+        public static void MenuFinal(string archivoPersonajes, string archivoHistorial, string archivoGanadores)
+        {
+            int opcion;
+            do
+            {
+                Console.WriteLine("\n*** INFORMACION SOBRE EL JUEGO ***");
+                Console.WriteLine("1. Mostrar personajes del archivo JSON");
+                Console.WriteLine("2. Mostrar historial de enfrentamientos");
+                Console.WriteLine("3. Mostrar lista de ganadores");
+                Console.WriteLine("4. Salir");
+
+                bool esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= 4;
+                while (!esValido)
+                {
+                    Console.WriteLine("Opción no válida, por favor elija nuevamente:");
+                    esValido = int.TryParse(Console.ReadLine(), out opcion) && opcion > 0 && opcion <= 4;
+                }
+
+                switch (opcion)
+                {
+                    case 1:
+                        PersonajeJson.MostrarPersonajesDesdeElJson(archivoPersonajes);
+                        break;
+                    case 2:
+                        MostrarHistorial(archivoHistorial);
+                        break;
+                    case 3:
+                        MostrarGanadores(archivoGanadores);
+                        break;
+                    case 4:
+                        Console.WriteLine("Saliendo...");
+                        break;
+                }
+
+            } while (opcion != 4);
+        }
+
+        //metodo para mostrar el historial del json
+        public static void MostrarHistorial(string archivoHistorial)
+        {
+            if (PersonajeJson.Existe(archivoHistorial))
+            {
+                List<HistorialEnfrentamiento> historial = PersonajeJson.LeerHistorial(archivoHistorial);
+                Console.WriteLine("\nHISTORIAL DE ENFRENTAMIENTOS:");
+                foreach (var enfrentamiento in historial)
+                {
+                    Console.WriteLine($"{enfrentamiento.Fecha}: {enfrentamiento.Player} vs {enfrentamiento.Oponente} - Resultado: {enfrentamiento.Resultado}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se encontró el archivo de historial o está vacío.");
+            }
+        }
+
+        private static void MostrarGanadores(string archivoGanadores)
+        {
+            if (PersonajeJson.Existe(archivoGanadores))
+            {
+                List<string> ganadores = PersonajeJson.LeerGanadores(archivoGanadores);
+                Console.WriteLine("\nLISTA DE GANADORES:");
+                foreach (var ganador in ganadores)
+                {
+                    Console.WriteLine(ganador);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se encontró el archivo de ganadores o está vacío.");
+            }
         }
     }
 }

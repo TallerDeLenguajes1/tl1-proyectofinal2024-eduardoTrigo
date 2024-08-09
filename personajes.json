@@ -4,14 +4,31 @@
       "Tipo": 0,
       "Nombre": "ail-mint",
       "Apodo": "",
-      "FechaNac": "2003-09-28T00:00:00",
-      "Edad": 20
+      "FechaNac": "2006-08-10T00:00:00",
+      "Edad": 17
     },
     "Caracteristicas": {
-      "Velocidad": 9,
+      "Velocidad": 2,
       "Destreza": 3,
-      "Fuerza": 6,
-      "Nivel": 6,
+      "Fuerza": 5,
+      "Nivel": 4,
+      "Armadura": 8,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "8-bit zombie",
+      "Apodo": "",
+      "FechaNac": "1927-11-27T00:00:00",
+      "Edad": 96
+    },
+    "Caracteristicas": {
+      "Velocidad": 2,
+      "Destreza": 2,
+      "Fuerza": 3,
+      "Nivel": 4,
       "Armadura": 4,
       "Salud": 100
     }
@@ -19,16 +36,50 @@
   {
     "Datos": {
       "Tipo": 1,
-      "Nombre": "poncho zombie",
+      "Nombre": "roman buckethead",
       "Apodo": "",
-      "FechaNac": "1908-05-10T00:00:00",
-      "Edad": 116
+      "FechaNac": "1919-10-15T00:00:00",
+      "Edad": 104
+    },
+    "Caracteristicas": {
+      "Velocidad": 8,
+      "Destreza": 2,
+      "Fuerza": 1,
+      "Nivel": 1,
+      "Armadura": 8,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "zombot sphinx-inator",
+      "Apodo": "",
+      "FechaNac": "1923-01-02T00:00:00",
+      "Edad": 101
     },
     "Caracteristicas": {
       "Velocidad": 5,
-      "Destreza": 1,
-      "Fuerza": 4,
-      "Nivel": 5,
+      "Destreza": 2,
+      "Fuerza": 2,
+      "Nivel": 4,
+      "Armadura": 4,
+      "Salud": 100
+    }
+  },
+  {
+    "Datos": {
+      "Tipo": 1,
+      "Nombre": "gargantuar pirate",
+      "Apodo": "",
+      "FechaNac": "1915-10-23T00:00:00",
+      "Edad": 108
+    },
+    "Caracteristicas": {
+      "Velocidad": 2,
+      "Destreza": 3,
+      "Fuerza": 8,
+      "Nivel": 9,
       "Armadura": 6,
       "Salud": 100
     }
@@ -36,85 +87,34 @@
   {
     "Datos": {
       "Tipo": 1,
-      "Nombre": "impunk",
+      "Nombre": "robo-rally zombie",
       "Apodo": "",
-      "FechaNac": "1923-04-18T00:00:00",
-      "Edad": 101
-    },
-    "Caracteristicas": {
-      "Velocidad": 6,
-      "Destreza": 2,
-      "Fuerza": 6,
-      "Nivel": 6,
-      "Armadura": 7,
-      "Salud": 100
-    }
-  },
-  {
-    "Datos": {
-      "Tipo": 1,
-      "Nombre": "zombie chicken",
-      "Apodo": "",
-      "FechaNac": "1891-12-04T00:00:00",
-      "Edad": 132
-    },
-    "Caracteristicas": {
-      "Velocidad": 9,
-      "Destreza": 2,
-      "Fuerza": 9,
-      "Nivel": 3,
-      "Armadura": 2,
-      "Salud": 100
-    }
-  },
-  {
-    "Datos": {
-      "Tipo": 1,
-      "Nombre": "conehead mummy",
-      "Apodo": "",
-      "FechaNac": "1920-07-23T00:00:00",
-      "Edad": 104
+      "FechaNac": "1902-01-03T00:00:00",
+      "Edad": 122
     },
     "Caracteristicas": {
       "Velocidad": 8,
-      "Destreza": 4,
-      "Fuerza": 3,
-      "Nivel": 1,
-      "Armadura": 2,
-      "Salud": 100
-    }
-  },
-  {
-    "Datos": {
-      "Tipo": 1,
-      "Nombre": "weasel hoarder",
-      "Apodo": "",
-      "FechaNac": "1903-11-19T00:00:00",
-      "Edad": 120
-    },
-    "Caracteristicas": {
-      "Velocidad": 3,
       "Destreza": 1,
-      "Fuerza": 9,
-      "Nivel": 3,
-      "Armadura": 4,
+      "Fuerza": 7,
+      "Nivel": 4,
+      "Armadura": 8,
       "Salud": 100
     }
   },
   {
     "Datos": {
       "Tipo": 1,
-      "Nombre": "zombie chicken",
+      "Nombre": "lost pilot zombie",
       "Apodo": "",
-      "FechaNac": "1924-05-08T00:00:00",
-      "Edad": 100
+      "FechaNac": "1901-11-03T00:00:00",
+      "Edad": 122
     },
     "Caracteristicas": {
-      "Velocidad": 4,
-      "Destreza": 2,
-      "Fuerza": 5,
-      "Nivel": 2,
-      "Armadura": 3,
+      "Velocidad": 6,
+      "Destreza": 4,
+      "Fuerza": 8,
+      "Nivel": 5,
+      "Armadura": 1,
       "Salud": 100
     }
   }

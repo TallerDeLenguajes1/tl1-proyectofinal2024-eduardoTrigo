@@ -62,6 +62,5 @@ string archivoGanadores = "historialGanadores.json";
 //Inicio de lucha contra todos
 Enfrentamiento.LuchasContraTodos(atacante, oponentes, archivoHistorial, archivoGanadores);
 
-
-//Banner Game Over
-// Banners.ShowBannerGameOver();
+//menu Final
+PersonajeJson.MenuFinal(archivoPersonajes,archivoHistorial,archivoGanadores);
